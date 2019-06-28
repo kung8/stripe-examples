@@ -35,28 +35,30 @@ class App extends Component {
     // console.log(typeof this.state.amount)
 
     return (
-      <div>
+      <div style={{display:'flex',flexDirection:'column', alignItems:'center', marginTop:'50px'}}>
         <StripeCheckout
-          name='Class Example' //header
+          name='CLass' //header
+          image={imageUrl}
           description='This is stuff going beneath the header' //subtitle - beneath header
           stripeKey={process.env.REACT_APP_STRIPE_KEY} //public key not secret key
-          // shippingAddress //you can collect their address
           token={this.onToken} //fires the call back
           amount={this.state.amount} //this will be in cents
           currency="USD" 
           // image={imageUrl} // the pop-in header image (default none)
-          ComponentClass="div" //initial default button styling on block scope (defaults to span)
+          // ComponentClass="div" //initial default button styling on block scope (defaults to span)
           panelLabel="Submit Payment" //text on the submit button
           locale="en" //locale or language (e.g. en=english, fr=french, zh=chinese)
           opened={this.onOpened} //fires cb when stripe is opened
           closed={this.onClosed} //fires cb when stripe is closed
-          allowRememberMe={false} // "Remember Me" option (default true)
+          allowRememberMe // "Remember Me" option (default true)
           billingAddress={false}
+          // shippingAddress //you can collect their address
           zipCode={false}
         >
           {/* <button>Checkout</button> */}
         </StripeCheckout>
         <input value={this.state.amount}
+        type='number'
         onChange={e=>this.setState({amount:+e.target.value})}/>
       </div>
     )

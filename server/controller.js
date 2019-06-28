@@ -4,7 +4,7 @@ module.exports = {
     pay:(req,res)=>{
         // const db = req.app.get('db')
         const {token:{id},amount} = req.body;
-        console.log(id,amount,stripe.charges.create)
+        console.log(id,amount,stripe)
         stripe.charges.create(
             {
                 amount:amount,
